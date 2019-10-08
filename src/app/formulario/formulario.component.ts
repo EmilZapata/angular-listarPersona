@@ -7,7 +7,7 @@ import {
   ElementRef
 } from "@angular/core";
 import { Persona } from "../persona.model";
-import { PersonasService } from '../persona.service';
+import { PersonasService } from "../persona.service";
 
 @Component({
   selector: "app-formulario",
@@ -20,7 +20,11 @@ export class FormularioComponent implements OnInit {
   // apellidoInput: string;
   @ViewChild("nombreInput", { static: false }) nombreInput: ElementRef;
   @ViewChild("apellidoInput", { static: false }) apellidoInput: ElementRef;
-  constructor(private personasService: PersonasService) {}
+  constructor(private personasService: PersonasService) {
+    this.personasService.saludar.subscribe((indice: number) => {
+      alert("El indice es: " + indice);
+    });
+  }
 
   ngOnInit() {}
 
@@ -31,6 +35,6 @@ export class FormularioComponent implements OnInit {
     );
     // this.personas.push(_persona)
     // this.personaCreada.emit(_persona);
-    this.personasService.agregarPersona(_persona)
+    this.personasService.agregarPersona(_persona);
   }
 }
