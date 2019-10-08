@@ -16,10 +16,10 @@ import { PersonasService } from "../persona.service";
 })
 export class FormularioComponent implements OnInit {
   // @Output() personaCreada = new EventEmitter<Persona>();
-  // nombreInput: string;
-  // apellidoInput: string;
-  @ViewChild("nombreInput", { static: false }) nombreInput: ElementRef;
-  @ViewChild("apellidoInput", { static: false }) apellidoInput: ElementRef;
+  nombreInput: string;
+  apellidoInput: string;
+  // @ViewChild("nombreInput", { static: false }) nombreInput: ElementRef;
+  // @ViewChild("apellidoInput", { static: false }) apellidoInput: ElementRef;
   constructor(private personasService: PersonasService) {
     this.personasService.saludar.subscribe((indice: number) => {
       alert("El indice es: " + indice);
@@ -30,8 +30,8 @@ export class FormularioComponent implements OnInit {
 
   onAgregarPersona() {
     const _persona = new Persona(
-      this.nombreInput.nativeElement.value,
-      this.apellidoInput.nativeElement.value
+      this.nombreInput,
+      this.apellidoInput
     );
     // this.personas.push(_persona)
     // this.personaCreada.emit(_persona);
